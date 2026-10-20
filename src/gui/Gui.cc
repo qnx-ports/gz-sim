@@ -360,6 +360,7 @@ std::unique_ptr<gz::gui::Application> createGui(
   }
 
   // check for wayland and force to use X for rendering
+#ifndef __QNX__
   if (QString::fromLocal8Bit(qgetenv("XDG_SESSION_TYPE")) == "wayland" ||
       !QString::fromLocal8Bit(qgetenv("WAYLAND_DISPLAY")).isEmpty())
   {
@@ -370,6 +371,7 @@ std::unique_ptr<gz::gui::Application> createGui(
       qputenv("QT_QPA_PLATFORM", "xcb");
     }
   }
+#endif
 
 
   bool isPlayback = (nullptr != _guiConfig &&
