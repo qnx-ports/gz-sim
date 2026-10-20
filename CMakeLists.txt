@@ -32,7 +32,7 @@ else()
   add_definitions("-DGZ_PROFILER_ENABLE=0")
 endif()
 
-if (UNIX AND NOT APPLE)
+if (UNIX AND NOT APPLE AND NOT CMAKE_SYSTEM_NAME STREQUAL "QNX")
   set (EXTRA_TEST_LIB_DEPS stdc++fs backward_object)
 else()
   set (EXTRA_TEST_LIB_DEPS backward_object)
