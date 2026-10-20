@@ -49,7 +49,7 @@ endif()
 # Using other CMake interfaces from backwards won't work here since
 # CMake would not resolve them into gz-cmake (uses EXTRA_TEST_LIB_DEPS)
 # using backward_object set the object file path.
-if (UNIX AND NOT APPLE)
+if (UNIX AND NOT APPLE AND NOT CMAKE_SYSTEM_NAME STREQUAL "QNX")
   set (EXTRA_TEST_LIB_DEPS stdc++fs backward_object)
 else()
   set (EXTRA_TEST_LIB_DEPS backward_object)
